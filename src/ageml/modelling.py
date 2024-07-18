@@ -96,6 +96,7 @@ class AgeML:
         "linear_reg": linear_model.LinearRegression,
         "ridge": linear_model.Ridge,
         "lasso": linear_model.Lasso,
+        "elastic_net": linear_model.ElasticNet,
         "linear_svr": svm.SVR,
         "xgboost": XGBRegressor,  # XGBoost
         "rf": RandomForestRegressor,
@@ -104,6 +105,9 @@ class AgeML:
                                    
                                    'lasso': {'alpha': [-3, 3]},
                                    
+                                   'elastic_net': {'alpha': [-3, 3],
+                                                    'l1_ratio': [0, 1]},
+
                                    'linear_svr': {'C': [-3, 3],
                                                   'epsilon': [-3, 3]},
                                    
@@ -131,6 +135,9 @@ class AgeML:
     model_hyperparameter_types = {'ridge': {'alpha': 'log'},
                                   
                                   'lasso': {'alpha': 'log'},
+
+                                    'elastic_net': {'alpha': 'log',
+                                                    'l1_ratio': 'float'},
                                   
                                   'linear_svr': {'C': 'log',
                                                  'epsilon': 'log'},
